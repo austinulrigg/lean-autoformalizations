@@ -1,0 +1,9 @@
+name = "page"
+version = "1.0.0"
+defaultTargets = ["HoG"]
+
+[[lean_lib]]
+name = "Page"
+
+[[lean_lib]]
+name = "HoG"

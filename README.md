@@ -1,0 +1,12 @@
+# Lean autoformalizations in topological graph theory
+
+These projects use Lean to check statements about graph embeddings and orientable genus. The Pisanski and PAGE formalizations were generated with ChatGPT. Each project identifies its main theorems, the corresponding mathematics, and the checks that were run.
+
+| Project | Contents |
+| --- | --- |
+| [Pisanski’s conjecture](pisanski/) | A rotation system giving a quadrangulation for every admissible pair of parameters. Includes the Lean proof and four examples. |
+| [PAGE](page/) | Correctness of an exhaustive rotation-system search, results about the House of Graphs implementation, and a counterexample to a face-length cutoff in the cited revision. |
+| [Bipartite Kneser graphs](bk/) | Two release records from the autoformalization of the quadrangulations of $H(h,2)$, with a link to Alexander Metzger’s separate Lean proof. |
+| [multi_genus](multi_genus/) | A snapshot of the Lean solver and proof from Alexander Metzger’s pull request on Gunnar Brinkmann’s genus algorithm. |
+
+Each Lean project has its own build instructions and Lean version. The bipartite Kneser release records can be read directly on GitHub.

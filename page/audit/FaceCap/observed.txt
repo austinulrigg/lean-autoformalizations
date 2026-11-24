@@ -1,0 +1,36 @@
+L=10   vertices=21   edges=27
+  rotations by genus {1: 64, 2: 1920, 3: 2112}
+  rotations with every face of length at most m {2: 736}
+  shortest attainable longest face in genus 1 28
+  genus-one face-length multisets [(4, 4, 4, 4, 10, 28)]
+  genus -j 1 [G21.g6] exit 0
+    Graph 1 has genus 1
+    Processed 1 graph: 1 succeeded, 0 failed in 0.001 seconds.
+  genus -j 1 --page-only [G21.g6] exit 1
+    Processed 1 graph: 0 succeeded, 1 failed in 0.021 seconds.
+    Graph 1 error: PAGE failed: Fit does not exist. Adjusting bounds. Used 693 iterations so far. 2.
+  genus -j 1 --page-only --low-mem [G21.g6] exit 0
+    Graph 1 has genus 1
+    Processed 1 graph: 1 succeeded, 0 failed in 0.002 seconds.
+L=118   vertices=129   edges=135
+  rotations by genus {1: 64, 2: 1920, 3: 2112}
+  rotations with every face of length at most m {2: 736}
+  shortest attainable longest face in genus 1 244
+  genus-one face-length multisets [(4, 4, 4, 4, 10, 244)]
+  genus -j 1 [G129.g6] exit 1
+    Processed 1 graph: 0 succeeded, 1 failed in 0.725 seconds.
+    Graph 1 error: PAGE failed: Fit does not exist. Adjusting bounds. Used 336 iterations so far.  Fit does not exist. Adjusting bounds. Used 704 iterations so far.  Fit does not exist. Adjusting bounds. Used 1616 iterations so far. 2.
+  genus -j 1 --page-only [G129.g6] exit 1
+    Processed 1 graph: 0 succeeded, 1 failed in 0.692 seconds.
+    Graph 1 error: PAGE failed: Fit does not exist. Adjusting bounds. Used 336 iterations so far.  Fit does not exist. Adjusting bounds. Used 704 iterations so far.  Fit does not exist. Adjusting bounds. Used 1616 iterations so far. 2.
+  genus -j 1 --page-only --low-mem [G129.g6] exit 0
+    Graph 1 has genus 1
+    Processed 1 graph: 1 succeeded, 0 failed in 0.150 seconds.
+
+Change ONLY the face length cap from m to 2m (private experimental copy).
+genus -j 1 --page-only [G21.g6] exit 0
+Graph 1 has genus 1
+Processed 1 graph: 1 succeeded, 0 failed in 0.014 seconds.
+genus -j 1 --page-only [G129.g6] exit 0
+Graph 1 has genus 1
+Processed 1 graph: 1 succeeded, 0 failed in 3.145 seconds.

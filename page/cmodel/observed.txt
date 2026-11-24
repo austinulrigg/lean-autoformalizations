@@ -1,0 +1,10 @@
+6.11.0 (cbmc-6.11.0)
+Rebuilt the full C translation unit and found both PAGE entry points and the dispatcher.
+[check_degree_switch.assertion.1] line 18 full-cycle check skips on max degree at most five: SUCCESS
+[check_degree_switch.assertion.2] line 19 incremental insertion skips on max degree at most five: SUCCESS
+[check_within_word.assertion.1] line 35 opposite transition in this prefix, with the degree-two exception: SUCCESS
+[check_small_components.assertion.1] line 52 can extend one simple local chain: SUCCESS
+[check_small_components.assertion.2] line 54 closes this chain exactly when the full star is present: SUCCESS
+[check_small_components.assertion.3] line 56 rejected or removed closing turn leaves the open chain intact: SUCCESS
+[check_lower_bound.assertion.1] line 67 Euler lower bound is the least nonnegative integer satisfying the inequality: SUCCESS
+All four harnesses passed.

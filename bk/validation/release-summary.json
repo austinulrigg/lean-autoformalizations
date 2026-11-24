@@ -1,0 +1,139 @@
+{
+  "release": "1.0.0",
+  "validated_at_utc": "2026-11-24T00:56:05.694265+00:00",
+  "lean": "4.28.0",
+  "mathlib": "v4.28.0",
+  "mathlib_commit": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "main_theorems": [
+    "Kneser.main_construction",
+    "Kneser.actual_quadrangulation",
+    "Kneser.exists_vertex_transitive_quadrangulation"
+  ],
+  "main_hypotheses": [
+    "h is a natural number",
+    "h.Prime",
+    "3 < h",
+    "h % 8 = 3"
+  ],
+  "conclusion": "A rotation system on actual H(h,2), every face of exact length four, vertex-transitive map automorphisms.",
+  "external_interface": "Standard rotation-system/orientable-cellular-embedding correspondence and Euler interpretation, as agreed.",
+  "build": {
+    "command": "LEAN_NUM_THREADS=1 lake build",
+    "exit_code": 0,
+    "jobs": 3590,
+    "log": "validation/build-final.log"
+  },
+  "axiom_audit": {
+    "command": "LEAN_NUM_THREADS=1 lake env lean Check.lean",
+    "exit_code": 0,
+    "log": "validation/axioms-and-types.txt",
+    "theorems": {
+      "Kneser.main_construction": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.actual_quadrangulation": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.exists_vertex_transitive_quadrangulation": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.Connection.graphIso": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.GraphRotation.quadrangular_of_Q": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.GraphRotation.vertex_transitive": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.Construction.CompleteConstruction.exists_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.Reduction.FirstStage.singleCycle": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.Reduction.SecondStage.singleCycle": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.Transfer.five_positive_suffice": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.Bounded.all_patterns": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.Bounded.all_character_assignments": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.Reduction.GlobalChoices.exists_singleCycle": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.construction_at_large_prime": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Kneser.construction_below_131": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
+  "bounded_cases": {
+    "first": 4096,
+    "second": 16384,
+    "total": 20480,
+    "mode": "decide +kernel"
+  },
+  "exceptional_primes": [
+    11,
+    19,
+    43,
+    59,
+    67,
+    83,
+    107
+  ],
+  "exceptional_cycle_sizes": [
+    36,
+    136,
+    820,
+    1596,
+    2080,
+    3240,
+    5460
+  ],
+  "source_audit": {
+    "pass": true,
+    "lean_files": 652,
+    "default_project_import_closure": 650,
+    "report": "validation/source-audit.json"
+  },
+  "remaining_formalization_gaps_within_scope": []
+}

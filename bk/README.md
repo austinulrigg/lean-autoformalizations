@@ -1,10 +1,39 @@
-# The Genus of Bipartite Kneser Graphs
+# The genus of bipartite Kneser graphs
 
-This folder contains two records from a Lean autoformalization of the quadrangulation construction in Austin Ulrigg and Alexander Metzger’s paper. The Lean source and build logs for this release are unavailable here. [Paper on arXiv](https://arxiv.org/abs/2610.03159)
+This is the Lean autoformalization of Theorem 1.1 of *The Genus of Bipartite Kneser Graphs* by Austin Ulrigg and Alexander Metzger. The proof and certificate code come from Alexander Metzger’s merged pull request in the Genus repository, at commit `c0fff826dac4decdae027a221dad81d4849fc125`. [Paper](https://arxiv.org/abs/2610.03159) · [Original pull request](https://github.com/SanderGi/Genus/pull/7) · [Source at this revision](https://github.com/SanderGi/Genus/tree/c0fff826dac4decdae027a221dad81d4849fc125/BipartiteKneser)
 
-For every prime $h > 3$ with $h \equiv 3 \pmod 8$, the release reports a rotation system on the bipartite Kneser graph $H(h,2)$. Every face has length four, and the automorphisms of the map act transitively on its vertices. The release treats the passage from rotation systems to orientable cellular embeddings and the genus calculation by Euler’s formula as external mathematical steps.
+## What Lean proves
 
-- The [release summary](validation/release-summary.json) records a successful build with Lean 4.28.0 and mathlib v4.28.0. It names the main theorem, `Kneser.exists_vertex_transitive_quadrangulation`, and lists the axioms it uses. This is the original validation report.
-- The [input provenance](SOURCE_PROVENANCE.json) identifies the manuscript, Python programs, and exceptional-prime certificates used for the construction. The recorded hashes for all four upstream code and certificate files match the [cited revision](https://github.com/SanderGi/Genus/tree/4b68d247240ed0e47c8c6e9f40e83f84330242c1/BipartiteKneser).
+The vertices of $H(h,2)$ are two copies of the two-element subsets of an $h$-element set. Vertices in opposite copies are adjacent when their subsets are disjoint. For every prime $h>3$ with $h\equiv3\pmod 8$, `BipartiteKneser.optimalRotation_of_prime` gives a vertex-transitive quadrangular rotation system on this graph. It attains the minimum orientable genus among all cyclic neighbor orders,
 
-Alexander Metzger published a separate Lean development in the same repository. Its theorem `BipartiteKneser.optimalRotation_of_prime` constructs a quadrangulation and proves that its genus is minimal among rotation systems. The linked directory contains the source and build instructions for that development. [Lean source](https://github.com/SanderGi/Genus/tree/c0fff826dac4decdae027a221dad81d4849fc125/BipartiteKneser) · [Pull request #7](https://github.com/SanderGi/Genus/pull/7)
+$$
+1-\frac{h(h-1)}{2}+\frac{h(h-1)(h-2)(h-3)}{16}.
+$$
+
+Lean defines the genus of a rotation by its facial walks and Euler’s formula. The usual correspondence between rotation systems and orientable cellular embeddings gives the surface interpretation. A second theorem, `exists_optimalRotation_gt`, proves that admissible primes exceed every bound. [Main theorems](lean/KneserConstruction/MainTheorem.lean) · [Definition of minimum genus](lean/BipartiteKneser/Genus.lean)
+
+The proof checks explicit witnesses for the seven admissible primes below 131. For larger primes it uses the uniform construction, whose finite boundary calculation covers 4,096 patterns in one case and 16,384 in the other. The Python generator supplies numerical witnesses for the small primes. Lean checks that they have the required properties. [Small primes](lean/BipartiteKneser/SmallPrimes.lean) · [Boundary calculation](lean/KneserConstruction/BoundaryData.lean) · [Certificates](exceptional_certificates.json)
+
+## Build and check
+
+From this directory, with Python 3.10 or later and Lean’s toolchain manager installed, run the following commands. The project selects Lean 4.36.0 and its matching mathlib revision. [Lean installation instructions](https://lean-lang.org/install/)
+
+```sh
+lake exe cache get
+lake build
+lake lint
+lake test
+```
+
+The tests check the main theorem’s type, reject an altered rotation, and check the axioms used by the main results. The only axioms they allow are `propext`, `Classical.choice`, and `Quot.sound`. [Lean tests](lean/CheckProof.lean)
+
+To run the separate Python certificate checks and regression tests, use the standard Python interpreter with assertions enabled.
+
+```sh
+python3 verify_all.py
+python3 test_certificates.py
+```
+
+This copy passed a clean build, lint checks, and theorem tests with Lean 4.36.0 on Apple Silicon. All 18 Python regression tests passed, and the certificate checks reproduced the saved upstream results byte for byte. Metzger’s pull request also reports independent replay of the two exported theorems in Lean’s kernel and Nanoda. [Upstream verification](https://github.com/SanderGi/Genus/pull/7) · [Saved certificate results](https://github.com/SanderGi/Genus/blob/c0fff826dac4decdae027a221dad81d4849fc125/BipartiteKneser/results/verification.json)
+
+The proof sources and certificate code are distributed under the upstream GNU General Public License, version 2 only. [License](LICENSE)
